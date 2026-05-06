@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* 배경 이미지 영역 (인터렉션-01.png) */
+#background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#background-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* 화면에 전체 이미지가 짤림 없이 모두 보이도록 변경 */
+}
+
+/* 심볼들이 나타나는 인터랙션 컨테이너 */
+#interaction-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  /* 클릭 이벤트 통과 */
+  overflow: hidden;
+  /* 컨테이너(사진) 밖으로 삐져나온 심볼 숨김 */
+}
+
+/* 생성되는 심볼들의 기본 스타일 */
+.symbol-instance {
+  position: absolute;
+  opacity: 0;
+  object-fit: contain;
+  /* 부드러운 나타남/사라짐 트랜지션 */
+  transition: opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform, opacity;
+}
